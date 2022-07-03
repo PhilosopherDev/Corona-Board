@@ -1,4 +1,5 @@
 const { GlobalStat } = require('../database');
+const { wrapWithErrorHandler } = require('../util');
 
 // 데이터 조회
 async function getAll(req, res) {
@@ -44,8 +45,8 @@ async function remove(req, res) {
     res.status(200).json({ result: 'success' });
 }
 
-module.exports = {
+module.exports = wrapWithErrorHandler({
     getAll,
     insertOrUpdate,
     remove,
-};
+});
